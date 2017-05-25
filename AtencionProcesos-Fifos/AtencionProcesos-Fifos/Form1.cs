@@ -107,19 +107,10 @@ namespace AtencionProcesos_Fifos
                     }
                     else
                     {
-                        //Se copia el proceso que esta en cola por salir en temp
-                        Proceso temp = cola.Peek();
-
-                        //Se hace un ciclo para ir recorriendo tada la lista de procesos y rebajarles 1 a su proceso de vida
-                        while (temp != null)
+                        if (cola.Peek().VidaProceso > 0)
                         {
-                            if (temp.VidaProceso > 0)
-                            {
-                                temp.VidaProceso -= 1;
-                                _reporte += temp.ToString();
-                            }
-
-                            temp = temp.Anterior;
+                            cola.Peek().VidaProceso -= 1;
+                            _reporte += cola.Peek().ToString();
                         }
                     }
                 }
